@@ -58,6 +58,8 @@ def insert_msg_into_db(messages, cur):
         "INSERT INTO user_logins (user_id, device_type, masked_ip, masked_device_id, locale, app_version, "
         "create_date) VALUES (%s, %s, %s, %s, %s, %s, %s)", vals)
 
+    print("\nNew record in table:\n", vals)
+
 
 # Function to get all records from user_logins table
 def get_all_user_logins():
@@ -83,7 +85,7 @@ try:
 
     # Execute query to return existing records in user login table
     res = get_all_user_logins()
-    print("Existing table results:\n", res)
+    print("\nExisting table results:\n", res)
 
     # Get new message from queue
     messages = get_msg_from_queue(comm)
@@ -95,11 +97,11 @@ try:
     conn.commit()
 
 except psycopg2.DatabaseError() as e:
-    print("Database connection error: ", e)
+    print("\nDatabase connection error: ", e)
 
 # Execute query to return all records in user login table
 res = get_all_user_logins()
-print("Updated table results:\n", res)
+print("\nUpdated table results:\n", res)
 
 # Closing cursor so that it has no reference to existing connection
 cur.close()
