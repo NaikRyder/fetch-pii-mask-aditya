@@ -1,4 +1,4 @@
-# fetch-pii-mask-aditya
+# fetch-pii-mask-aditya by Aditya Naik
 
 ### Steps to run the program (Run in terminal):
     1. pip install -r requirements.txt
